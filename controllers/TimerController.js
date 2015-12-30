@@ -2,22 +2,22 @@ pomoD = angular.module("pomoD", []);
 
 pomoD.controller('TimerController', ['$scope', '$interval',
 function($scope, $interval) {
-$scope.breakLength = 3;
+$scope.breakLength = 2;
 $scope.breakSeconds = "0" + 0;
-$scope.sessionLength = 1;
-$scope.minutes = $scope.sessionLength;
+$scope.remainingBreakLength = $scope.breakLength;
+$scope.sessionLength = 10;
+$scope.remainingSessionLength = $scope.sessionLength;
 $scope.seconds = "0" + 0;
 $scope.pomoTimer = true;
 $scope.break = false;
 
   $scope.timer = function() {
     stop = $interval(function() {
-      if($scope.seconds == 0 && $scope.minutes == 0) {
+      if($scope.seconds == 0 && $scope.remainingSessionLength == 0) {
         $scope.pomoTimer = false;
         $scope.break = true;
         $scope.stopTimer()
         $scope.breakTimer();
-        console.log("Yesssir ", $scope.minutes, $scope.seconds);
       }
       if($scope.seconds > 0) {
         $scope.seconds -= 1;
@@ -25,21 +25,21 @@ $scope.break = false;
           $scope.seconds = "0" + $scope.seconds;
         }
       }
-      else if($scope.seconds == 0 && $scope.minutes >= 1) {
-        $scope.minutes -= 1;
+      else if($scope.seconds == 0 && $scope.remainingSessionLength >= 1) {
+        $scope.remainingSessionLength -= 1;
         $scope.seconds = 59;
       }
 
-    }, 100);
+    }, 10);
   };
 
   $scope.breakTimer = function() {
     btimer = $interval(function() {
-      if($scope.breakSeconds == 0 && $scope.breakLength == 0) {
+      if($scope.breakSeconds == 0 && $scope.remainingBreakLength == 0) {
         $scope.pomoTimer = true;
         $scope.break = false;
         $scope.stopBreakTimer()
-        console.log("Yesssir ", $scope.minutes, $scope.seconds);
+        $scope.resetTimer();
       }
       if($scope.breakSeconds > 0) {
         $scope.breakSeconds -= 1;
@@ -47,13 +47,12 @@ $scope.break = false;
           $scope.breakSeconds = "0" + $scope.breakSeconds;
         }
       }
-      else if($scope.breakSeconds == 0 && $scope.breakLength >= 1) {
-        console.log("line 48")
-        $scope.breakLength -= 1;
+      else if($scope.breakSeconds == 0 && $scope.remainingBreakLength >= 1) {
+        $scope.remainingBreakLength -= 1;
         $scope.breakSeconds = 59;
       }
 
-    }, 100);
+    }, 10);
   };
 
   $scope.stopTimer = function() {
@@ -70,24 +69,36 @@ $scope.break = false;
     }
   };
   $scope.resetTimer = function() {
-    $scope.minutes = $scope.minutes;
+    $scope.remainingBreakLength = $scope.breakLength;
+    $scope.remainingSessionLength = $scope.sessionLength;
     $scope.seconds = "0" + 0;
   }
 
-  $scope.decrementBreak = function() {
-    $scope.breakLength -= 1;
+  $scope.decrementBreak = function(time) {
+    $scope.breakLength -= time;
+    $scope.remainingBreakLength = $scope.breakLength;
+    $scope.breakLength = $scope.remainingBreakLength;
+    console.log($scope.remainingBreakLength);
   }
 
-  $scope.addToBreak = function() {
-    $scope.breakLength += 1;
+  $scope.addToBreak = function(time) {
+    $scope.breakLength += time;
+    $scope.remainingBreakLength = $scope.breakLength;
+    $scope.breakLength = $scope.remainingBreakLength;
+    console.log($scope.remainingBreakLength);
   }
 
   $scope.decrementSession = function() {
-    $scope.minutes -= 1;
+    $scope.sessionLength -= 1;
+    $scope.remainingSessionLength = $scope.sessionLength;
+    $scope.sessionLength = $scope.remainingSessionLength;
   }
 
   $scope.addToSession = function() {
-    $scope.minutes += 1;
+    $scope.sessionLength += 1;
+    $scope.remainingSessionLength = $scope.sessionLength;
+    $scope.sessionLength = $scope.remainingSessionLength;
+
   }
 
 

@@ -1,12 +1,13 @@
 body {
   background-color: white;
+  background-image: url('images/apple.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .header {
-  height: 100px;
   text-align: center;
   font-size: 45px;
-  background-color: white;
   color: green;
   margin-bottom: 50px;
 }
@@ -16,6 +17,7 @@ body {
   display: block;
   position: relative;
   opacity: .2;
+  background-image: url('css/images/apple.png');
 
 }
 
@@ -24,7 +26,6 @@ body {
 
 .clockText {
   font-size: 40px;
-  background-color: white;
 }
 
 .button{

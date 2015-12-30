@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html ng-app="pomoD">
 <head>
-<!-- <link rel="shortcut icon" href="images/neckstab.jpg" type="image/x-icon" />  <meta charset="UTF-8">
 -->  <title>Pomodorinho</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/mystyles.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/mystyles.css" type="text/css">
 </head>
 <body>
 
@@ -25,11 +24,11 @@
       <div class="row clockText">
         Break Length:
         <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementBreak()"></span>
+          <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementBreak(1)"></span>
         </button>
         {{breakLength}}
         <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToBreak()"></span>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToBreak(1)"></span>
         </button>
         <br>
 
@@ -37,16 +36,19 @@
         <button type="button" class="btn btn-default" aria-label="Left Align">
           <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementSession()"></span>
         </button>
-        {{minutes}}
+        {{sessionLength}}
         <button type="button" class="btn btn-default" aria-label="Left Align">
           <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToSession()"></span>
         </button>
       </div>
-      <div class="row">
+      <div class="row imageContainer">
+<!--         <div class="imageContainer col-md-12 col-sm-9 col-sm-offset-2 col-xs-9 col-xs-offset-2" style="background:url('css/images/apple.png'); background-size: cover;">
+ -->
           <span class="clockText" ng-show="pomoTimer">Session: <br>
-            {{minutes}}:{{seconds}}</span> <br><br>
+            {{remainingSessionLength}}:{{seconds}}</span> <br><br>
             <span class="clockText" ng-show="break">Break: <br>
-              {{breakLength}}:{{breakSeconds}}</span> <br><br>
+              {{remainingBreakLength}}:{{breakSeconds}}</span> <br><br>
+        <!-- </div> -->
           <div class="btn-group" role="group" aria-label="Basic example">
           <button class="btn btn-primary center-block" ng-click="timer()">Start Timer!</button>
           <button class="btn btn-primary center-block" ng-click="resetTimer()">Reset Timer!</button>
