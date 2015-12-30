@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="pomoD">
+<head>
+<!-- <link rel="shortcut icon" href="images/neckstab.jpg" type="image/x-icon" />  <meta charset="UTF-8">
+-->  <title>Pomodorinho</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/mystyles.css" type="text/css">
+</head>
+<body>
+
+<!--   current issues: can't get the button to show up on top of the apple
+ -->
+<h1 class="header">Pomodorinho</h1>
+
+<!-- <div class="timer">
+  <div class="imageContainer"> <img src="css/images/apple.png" class="img-responsive center-block" alt="apple">
+    <span class="clockText"></span>
+    <button class="btn btn-primary center-block">Start Timer!</button>
+  </div>
+
+</div> -->
+
+
+    <div ng-controller="TimerController">
+      <div class="row clockText">
+        Break Length:
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementBreak()"></span>
+        </button>
+        {{breakLength}}
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToBreak()"></span>
+        </button>
+        <br>
+
+        Session Length:
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementSession()"></span>
+        </button>
+        {{minutes}}
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToSession()"></span>
+        </button>
+      </div>
+      <div class="row">
+          <span class="clockText" ng-show="pomoTimer">Session: <br>
+            {{minutes}}:{{seconds}}</span> <br><br>
+            <span class="clockText" ng-show="break">Break: <br>
+              {{breakLength}}:{{breakSeconds}}</span> <br><br>
+          <div class="btn-group" role="group" aria-label="Basic example">
+          <button class="btn btn-primary center-block" ng-click="timer()">Start Timer!</button>
+          <button class="btn btn-primary center-block" ng-click="resetTimer()">Reset Timer!</button>
+          </div>
+      </div>
+    </div>
+
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="controllers/TimerController.js" type="text/javascript"></script>
+
+</body>
