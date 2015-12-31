@@ -30,7 +30,7 @@ $scope.break = false;
         $scope.seconds = 59;
       }
 
-    }, 10);
+    }, 1000);
   };
 
   $scope.breakTimer = function() {
@@ -52,7 +52,7 @@ $scope.break = false;
         $scope.breakSeconds = 59;
       }
 
-    }, 10);
+    }, 1000);
   };
 
   $scope.stopTimer = function() {

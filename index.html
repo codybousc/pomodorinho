@@ -7,38 +7,27 @@
 </head>
 <body>
 
-<!--   current issues: can't get the button to show up on top of the apple
- -->
 <h1 class="header">Pomodorinho</h1>
-
-<!-- <div class="timer">
-  <div class="imageContainer"> <img src="css/images/apple.png" class="img-responsive center-block" alt="apple">
-    <span class="clockText"></span>
-    <button class="btn btn-primary center-block">Start Timer!</button>
-  </div>
-
-</div> -->
-
 
     <div ng-controller="TimerController">
       <div class="row clockText">
         Break Length:
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementBreak(1)"></span>
+        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="decrementBreak(1)">
+          <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
         </button>
         {{breakLength}}
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToBreak(1)"></span>
+        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addToBreak(1)">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button>
         <br>
 
         Session Length:
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-minus" aria-hidden="true" ng-click="decrementSession()"></span>
+        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="decrementSession()">
+          <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
         </button>
         {{sessionLength}}
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToSession()"></span>
+        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addToSession()">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
         </button>
       </div>
       <div class="row imageContainer">
